@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>0xStore - Pentesting Scripts</title>
+    <style>
+        :root {
+            --bg-color: #0a0a0a;
+            --text-main: #00ff00;
+            --text-muted: #555;
+            --border-color: #333;
+            --accent: #ff003c;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            font-family: 'Courier New', Courier, monospace;
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 800px;
+            border: 1px solid var(--border-color);
+            padding: 20px;
+            background-color: #111;
+            box-shadow: 0 0 15px rgba(0, 255, 0, 0.1);
+        }
+
+        header {
+            border-bottom: 1px dashed var(--text-muted);
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+        }
+
+        h1 {
+            margin: 0;
+            font-size: 1.5em;
+            text-transform: uppercase;
+        }
+
+        .onion-url {
+            color: var(--text-muted);
+            font-size: 0.9em;
+        }
+
+        .product-details {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .product-title {
+            font-size: 1.2em;
+            font-weight: bold;
+            color: #fff;
+        }
+
+        .description {
+            color: #ccc;
+            line-height: 1.4;
+        }
+
+        .price-box {
+            border: 1px solid var(--border-color);
+            padding: 15px;
+            background-color: #000;
+            margin-top: 10px;
+        }
+
+        .price-main {
+            font-size: 1.5em;
+            color: #fff;
+            margin-bottom: 10px;
+        }
+
+        .crypto-prices {
+            color: var(--text-muted);
+            font-size: 0.9em;
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+        }
+
+        button {
+            background-color: var(--text-main);
+            color: #000;
+            border: none;
+            padding: 10px 20px;
+            font-family: 'Courier New', Courier, monospace;
+            font-weight: bold;
+            font-size: 1em;
+            cursor: pointer;
+            margin-top: 20px;
+            text-transform: uppercase;
+            transition: background-color 0.2s;
+        }
+
+        button:hover {
+            background-color: #fff;
+        }
+
+        #success-message {
+            display: none;
+            margin-top: 20px;
+            padding: 15px;
+            border: 1px solid var(--text-main);
+            background-color: rgba(0, 255, 0, 0.1);
+            color: #fff;
+        }
+
+        .terminal-prefix::before {
+            content: "root@store:~# ";
+            color: var(--accent);
+        }
+
+        .blink {
+            animation: blinker 1s linear infinite;
+        }
+
+        @keyframes blinker {
+            50% { opacity: 0; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <header>
+            <h1>0xStore <span class="blink">_</span></h1>
+            <span class="onion-url">x7q...3z.onion</span>
+        </header>
+
+        <div class="product-details" id="product-view">
+            <div class="terminal-prefix product-title">Advanced Pentesting Script Database</div>
+            
+            <div class="description">
+                <p>> Compilation of automated scripts for penetration testing and vulnerability assessment.</p>
+                <p>> Includes network scanners, exploit frameworks, and security auditing tools.</p>
+                <p>> Courses and documentation included.</p>
+            </div>
+
+            <div class="price-box">
+                <div class="price-main">Price: $7.00 USDT</div>
+                <div class="crypto-prices">
+                    <span>≈ 0.00011 BTC</span>
+                    <span>≈ 0.045 XMR</span>
+                </div>
+            </div>
+
+            <button id="buy-btn">[ Execute Purchase ]</button>
+        </div>
+
+        <div id="success-message">
+            <span class="terminal-prefix"></span> Transaction successful check your mail cagaplaya@442nufnunull.net
+        </div>
+    </div>
+
+    <script>
+        document.getElementById('buy-btn').addEventListener('click', function() {
+            this.innerText = '[ Processing... ]';
+            this.disabled = true;
+            
+            setTimeout(() => {
+                document.getElementById('product-view').style.display = 'none';
+                document.getElementById('success-message').style.display = 'block';
+            }, 1500);
+        });
+    </script>
+</body>
+</html>
