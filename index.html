@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nexus Market - Listing: Advanced Pentesting Script Database</title>
+    <style>
+        :root {
+            --bg-base: #121212;
+            --bg-panel: #1e1e1e;
+            --bg-input: #2a2a2a;
+            --text-main: #e0e0e0;
+            --text-muted: #888888;
+            --accent-primary: #f2a900; /* Bitcoin Orange */
+            --accent-secondary: #00bcd4;
+            --border-color: #333333;
+            --success: #4caf50;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background-color: var(--bg-base);
+            color: var(--text-main);
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            font-size: 14px;
+            line-height: 1.5;
+        }
+
+        /* Top Navigation Bar */
+        .top-bar {
+            background-color: var(--bg-panel);
+            border-bottom: 1px solid var(--border-color);
+            padding: 10px 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo-area {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .logo {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: var(--accent-primary);
+            letter-spacing: 1px;
+        }
+
+        .onion-url {
+            color: var(--text-muted);
+            font-size: 0.8rem;
+            background-color: var(--bg-input);
+            padding: 2px 8px;
+            border-radius: 4px;
+            border: 1px solid #444;
+        }
+
+        .user-nav {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            font-size: 0.85rem;
+        }
+
+        .balance {
+            display: flex;
+            gap: 15px;
+            color: var(--text-muted);
+        }
+
+        .balance span {
+            color: var(--text-main);
+            font-weight: 600;
+        }
+
+        /* Main Container */
+        .container {
+            max-width: 1100px;
+            margin: 30px auto;
+            padding: 0 20px;
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 25px;
+        }
+
+        /* Panels */
+        .panel {
+            background-color: var(--bg-panel);
+            border: 1px solid var(--border-color);
+            border-radius: 6px;
+            padding: 20px;
+            margin-bottom: 20px;
+        }
+
+        .panel-title {
+            font-size: 1.1rem;
+            font-weight: 600;
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 10px;
+            margin-bottom: 15px;
+        }
+
+        /* Listing Specifics */
+        .listing-header {
+            margin-bottom: 20px;
+        }
+
+        .listing-title {
+            font-size: 1.6rem;
+            font-weight: 600;
+            color: #ffffff;
+            margin-bottom: 5px;
+        }
+
+        .listing-meta {
+            display: flex;
+            gap: 15px;
+            color: var(--text-muted);
+            font-size: 0.85rem;
+        }
+
+        .vendor-link {
+            color: var(--accent-secondary);
+            text-decoration: none;
+        }
+
+        .vendor-link:hover {
+            text-decoration: underline;
+        }
+
+        .listing-image-placeholder {
+            width: 100%;
+            height: 250px;
+            background-color: var(--bg-input);
+            border: 1px dashed #555;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: var(--text-muted);
+            margin-bottom: 20px;
+            border-radius: 4px;
+            font-family: monospace;
+        }
+
+        .description {
+            color: #cccccc;
+        }
+
+        .description p {
+            margin-bottom: 10px;
+        }
+
+        .tags {
+            display: flex;
+            gap: 8px;
+            margin-top: 15px;
+        }
+
+        .tag {
+            background-color: var(--bg-input);
+            color: var(--text-muted);
+            padding: 3px 8px;
+            border-radius: 3px;
+            font-size: 0.75rem;
+            border: 1px solid #333;
+        }
+
+        /* Sidebar - Purchase Box */
+        .purchase-box {
+            text-align: center;
+        }
+
+        .price-usdt {
+            font-size: 2rem;
+            font-weight: 700;
+            color: #ffffff;
+            margin-bottom: 5px;
+        }
+
+        .price-crypto {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            margin-bottom: 20px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .buy-button {
+            width: 100%;
+            background-color: #272727;
+            color: var(--text-main);
+            border: 1px solid #555;
+            padding: 12px;
+            font-size: 1rem;
+            font-weight: 600;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .buy-button:hover {
+            background-color: var(--accent-secondary);
+            border-color: var(--accent-secondary);
+            color: #fff;
+        }
+
+        .buy-button:disabled {
+            background-color: #222;
+            color: #555;
+            border-color: #333;
+            cursor: not-allowed;
+        }
+
+        .escrow-notice {
+            margin-top: 15px;
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 5px;
+        }
+
+        /* Vendor Stats */
+        .vendor-stats {
+            list-style: none;
+            font-size: 0.85rem;
+        }
+
+        .vendor-stats li {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 8px;
+            padding-bottom: 8px;
+            border-bottom: 1px dotted var(--border-color);
+        }
+
+        .vendor-stats li:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+            padding-bottom: 0;
+        }
+
+        .stat-value {
+            color: #fff;
+            font-weight: 600;
+        }
+
+        /* Success Message Overlay */
+        #success-overlay {
+            display: none;
+            position: fixed;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background-color: rgba(0, 0, 0, 0.85);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .success-modal {
+            background-color: var(--bg-panel);
+            border: 1px solid var(--border-color);
+            border-top: 3px solid var(--success);
+            border-radius: 6px;
+            padding: 30px;
+            max-width: 500px;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+        }
+
+        .success-icon {
+            color: var(--success);
+            font-size: 3rem;
+            margin-bottom: 15px;
+        }
+
+        .success-text {
+            font-size: 1.1rem;
+            color: #fff;
+            line-height: 1.6;
+        }
+
+        .email-highlight {
+            color: var(--accent-secondary);
+            font-family: monospace;
+            background-color: var(--bg-input);
+            padding: 2px 6px;
+            border-radius: 3px;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Top Navigation -->
+    <div class="top-bar">
+        <div class="logo-area">
+            <div class="logo">NEXUS MARKET</div>
+            <div class="onion-url">nxmrt...v3z.onion</div>
+        </div>
+        <div class="user-nav">
+            <div class="balance">
+                <div>BTC: <span>0.000000</span></div>
+                <div>XMR: <span>0.000000</span></div>
+            </div>
+            <div>|</div>
+            <div>Welcome, <strong>guest_8921</strong></div>
+            <a href="#" style="color:var(--text-muted); text-decoration:none;">Orders (0)</a>
+            <a href="#" style="color:var(--text-muted); text-decoration:none;">Settings</a>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <div class="container">
+        <!-- Left Column: Product Details -->
+        <div class="main-column">
+            <div class="panel">
+                <div class="listing-header">
+                    <h1 class="listing-title">Advanced Pentesting Script Database - Full Collection</h1>
+                    <div class="listing-meta">
+                        <span>Digital Product</span>
+                        <span>•</span>
+                        <span>Sold by <a href="#" class="vendor-link">CipherSec_99</a> (Level 4)</span>
+                        <span>•</span>
+                        <span>Auto-Dispatch</span>
+                    </div>
+                </div>
+
+                <div class="listing-image-placeholder">
+                    [ No Image Provided by Vendor ]
+                </div>
+
+                <div class="panel-title">Description</div>
+                <div class="description">
+                    <p>Comprehensive collection of automated scripts for penetration testing and network auditing.</p>
+                    <p><strong>Contents:</strong></p>
+                    <ul>
+                        <li>Custom Python network scanners (stealth mode included).</li>
+                        <li>Automated vulnerability assessment wrappers.</li>
+                        <li>Post-exploitation enumeration scripts.</li>
+                        <li>PDF documentation and setup guides.</li>
+                    </ul>
+                    <br>
+                    <p><em>Note: These tools are provided strictly for educational purposes and authorized auditing. The vendor is not responsible for misuse.</em></p>
+                </div>
+
+                <div class="tags">
+                    <span class="tag">pentest</span>
+                    <span class="tag">scripts</span>
+                    <span class="tag">python</span>
+                    <span class="tag">auditing</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Right Column: Purchasing & Vendor Info -->
+        <div class="side-column">
+            <div class="panel purchase-box">
+                <div class="panel-title" style="text-align: left;">Purchase</div>
+                <div class="price-usdt">$7.00</div>
+                <div class="price-crypto">
+                    <span>≈ 0.00011 BTC</span>
+                    <span>≈ 0.045 XMR</span>
+                </div>
+
+                <button class="buy-button" id="buy-btn">Purchase Now</button>
+
+                <div class="escrow-notice">
+                    🔒 Multi-sig Escrow Enabled
+                </div>
+            </div>
+
+            <div class="panel">
+                <div class="panel-title">Vendor Information</div>
+                <ul class="vendor-stats">
+                    <li>Vendor <span class="vendor-link">CipherSec_99</span></li>
+                    <li>Trust Level <span class="stat-value" style="color: var(--accent-primary);">Level 4</span></li>
+                    <li>Positive Feedback <span class="stat-value" style="color: var(--success);">98.5%</span></li>
+                    <li>Total Sales <span class="stat-value">1,204</span></li>
+                    <li>Member Since <span class="stat-value">Aug 2022</span></li>
+                    <li>FE Enabled <span class="stat-value" style="color: var(--text-muted);">No</span></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- Success Overlay -->
+    <div id="success-overlay">
+        <div class="success-modal">
+            <div class="success-icon">✓</div>
+            <div class="success-text">
+                Transaction successful.<br><br>
+                Please check your mail:<br>
+                <span class="email-highlight">cagaplaya@442nufnunull.net</span>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById('buy-btn').addEventListener('click', function() {
+            const btn = this;
+            btn.innerText = 'Processing Order...';
+            btn.disabled = true;
+
+            // Simulate network request/blockchain confirmation delay
+            setTimeout(() => {
+                document.getElementById('success-overlay').style.display = 'flex';
+            }, 1200);
+        });
+    </script>
+</body>
+</html>
